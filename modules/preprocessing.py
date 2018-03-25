@@ -8,7 +8,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Import dataset
-dataset = pd.read_csv("./dataset/Churn_Modelling.csv")
+dataset = pd.read_csv("../dataset/Churn_Modelling.csv")
 x = dataset.iloc[:, 3:13].values
 y = dataset.iloc[:, 13].values
 
@@ -20,7 +20,7 @@ x[:, 2] = labelEncoder.fit_transform(x[:, 2])
 
 # One hot encode the categorical data
 oneHotEncoder = OneHotEncoder(categorical_features = [1])
-x = oneHotEncoder.fit_transform(X).toarray()
+x = oneHotEncoder.fit_transform(x).toarray()
 x = x[:, 1:]
 
 # Split dataset into training and test sets
@@ -31,4 +31,4 @@ x_train, y_train, x_test, y_test = train_test_split(x, y, test_size=0.2, random_
 from sklearn.preprocessing import StandardScaler
 sc = StandardScaler()
 x_train = sc.fit_transform(x_train)
-x_test  = sc.transform(x_test)
+x_test  = sc.transform(x_test.reshape(-1, 1))
