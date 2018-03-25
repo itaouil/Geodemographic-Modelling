@@ -25,10 +25,10 @@ x = x[:, 1:]
 
 # Split dataset into training and test sets
 from sklearn.model_selection import train_test_split
-x_train, y_train, x_test, y_test = train_test_split(x, y, test_size=0.2, random_state=0)
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=0)
 
 # Feature scaling
 from sklearn.preprocessing import StandardScaler
 sc = StandardScaler()
 x_train = sc.fit_transform(x_train)
-x_test  = sc.transform(x_test.reshape(-1, 1))
+x_test  = sc.transform(x_test)
