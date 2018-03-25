@@ -14,9 +14,9 @@ from sklearn.model_selection import GridSearchCV
 def build_classifier(optimizer):
     classifier = Sequential()
     classifier.add(Dense(activation="relu", input_dim=11, units=6, kernel_initializer="uniform"))
-    classifier.add(Dropout(p=0.1))
+    classifier.add(Dropout(rate=0.1))
     classifier.add(Dense(activation="relu", units=6, kernel_initializer="uniform"))
-    classifier.add(Dropout(p=0.1))
+    classifier.add(Dropout(rate=0.1))
     classifier.add(Dense(activation="sigmoid", units=1, kernel_initializer="uniform"))
     classifier.compile(optimizer=optimizer, loss="binary_crossentropy", metrics=["accuracy"])
     return classifier
